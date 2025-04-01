@@ -24,8 +24,8 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> loginUser(@RequestParam String username, @RequestParam String password) {
-        String jwt = userService.loginUser(username, password);
+    public ResponseEntity<String> loginUser(@RequestBody UserCreateRequest request) {
+        String jwt = userService.loginUser(request.getUsername(),request.getPassword());
         return new ResponseEntity<>(jwt, HttpStatus.OK);
     }
 
